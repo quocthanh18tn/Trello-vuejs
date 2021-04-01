@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import defaultBoard from './default-board'
 import { saveStatePlugin, uuid } from './utils'
 
+localStorage.clear()
 Vue.use(Vuex)
 const board = JSON.parse(localStorage.getItem('board')) || defaultBoard
 
@@ -35,6 +36,11 @@ export default new Vuex.Store({
     UPDATE_TASK (state, { task, key, value }) {
       // Vue.set(task, key, value)
       task[key] = value
+    },
+    MOVE_TASK (state, { fromTasks, toTasks, taskIndex }) {
+      // console.log(fromTasks.splice(taskIndex, 1))
+      const taskMove = fromTasks.splice(taskIndex, 1)[0]
+      toTasks.push(taskMove)
     }
   }
 })

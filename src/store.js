@@ -41,6 +41,17 @@ export default new Vuex.Store({
       // console.log(fromTasks.splice(taskIndex, 1))
       const taskMove = fromTasks.splice(taskIndex, 1)[0]
       toTasks.push(taskMove)
+    },
+    DELETE_TASK(state, taskID) {
+      for (const column of state.board.columns) {
+        var i = 0
+        for (const task of column.tasks) {
+          if (task.id === taskID) {
+            column.tasks.splice(i,1)[0]
+          }
+          i++
+        }
+      }
     }
   }
 })

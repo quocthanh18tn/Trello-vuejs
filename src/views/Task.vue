@@ -13,6 +13,7 @@
               @change="updateTaskProperty($event, 'description')"
       >
       </textarea>
+      <button class="mt-2 px-2 border" @click="deleteTask">Delete</button>
     </div>
   </div>
 </template>
@@ -33,6 +34,11 @@ export default {
         key,
         value: e.target.value
       })
+    },
+    deleteTask () {
+      this.$store.commit("DELETE_TASK", this.task.id)
+      this.$router.push({ name: 'board' })
+
     }
   }
 }

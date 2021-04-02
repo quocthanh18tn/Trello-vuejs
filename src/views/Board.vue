@@ -37,6 +37,10 @@
                  placeholder="+ Enter new task" @keyup.enter="createTask($event, column.tasks)"
           />
         </div>
+
+        <!-- button delete column -->
+      <button class="button-new" @click="deleteColumn($columnIndex)">Delete</button>
+
       </div>
 
       <div class="column flex">
@@ -87,7 +91,7 @@ export default {
     },
     createColumn () {
       this.$store.commit('CREATE_COLUMN', {
-        name: this.newColumnName,
+        name: this.newColumnName
       })
       this.newColumnName = ''
     },
@@ -134,6 +138,10 @@ export default {
         fromColumnIndex,
         toColumnIndex
       })
+    },
+    deleteColumn (columnIndex) {
+      this.$store.commit('DELETE_COLUMN', columnIndex)
+      this.$router.push({ name: 'board' })
     }
   }
 }
@@ -156,5 +164,12 @@ export default {
 .task-bg {
   @apply pin absolute;
   background: rgba(0,0,0,0.5);
+}
+.button-new {
+  color: black;
+  border-radius: 10px;
+  margin: 2px;
+  padding: 10px;
+  background-color: lightblue;
 }
 </style>

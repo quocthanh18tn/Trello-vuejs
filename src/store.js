@@ -48,6 +48,13 @@ export default new Vuex.Store({
       const taskMove = fromTasks.splice(fromTaskIndex, 1)[0]
       toTasks.splice(toTaskIndex, 0, taskMove)
     },
+
+    MOVE_COLUMN (state, { fromColumnIndex, toColumnIndex }) {
+      const columnList = state.board.columns
+      const columnToMove = columnList.splice(fromColumnIndex, 1)[0]
+      columnList.splice(toColumnIndex, 0, columnToMove)
+    },
+
     DELETE_TASK (state, taskID) {
       for (const column of state.board.columns) {
         var i = 0
@@ -59,10 +66,9 @@ export default new Vuex.Store({
         }
       }
     },
-    MOVE_COLUMN (state, { fromColumnIndex, toColumnIndex }) {
-      const columnList = state.board.columns
-      const columnToMove = columnList.splice(fromColumnIndex, 1)[0]
-      columnList.splice(toColumnIndex, 0, columnToMove)
+    DELETE_COLUMN (state, columnIndex) {
+      state.board.columns.splice(columnIndex, 1)[0]
     }
+
   }
 })

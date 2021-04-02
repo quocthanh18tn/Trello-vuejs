@@ -31,3 +31,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Deloy to heroku app
 https://www.codementor.io/@ravianand1988/easily-4-steps-to-continuous-delivery-auto-deploy-vue-js-app-on-heroku-xljk977pq
+
+ready to deploy
